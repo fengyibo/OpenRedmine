@@ -30,7 +30,7 @@ import com.j256.ormlite.table.TableUtils;
 
 public class DatabaseCacheHelper extends OrmLiteSqliteOpenHelper {
 	private static String DB_NAME="OpenRedmineCache.db";
-	private static int DB_VERSION=11;
+	private static int DB_VERSION=12;
 
     public DatabaseCacheHelper(Context context) {
     	super(context, getDatabasePath(context), null, DB_VERSION);
@@ -99,6 +99,8 @@ public class DatabaseCacheHelper extends OrmLiteSqliteOpenHelper {
 				addColumn(db,RedmineRole.class,"permissions TEXT");
 			case 10:
 				TableUtils.createTable(source, RedmineWiki.class);
+			case 11:
+				addColumn(db,RedmineProject.class,"status INTEGER");
 				break;
 			}
 
